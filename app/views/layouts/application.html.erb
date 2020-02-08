@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HelloApp</title>
+    <title><%= yield(:title) %> | Hello App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,7 +9,6 @@
   </head>
 
   <body>
-  <p>"Hyello you stinky lizard. Go eat a fly ugly."</p>
     <%= yield %>
   </body>
 </html>
