@@ -1,8 +1,8 @@
 require 'chunky_png'
 class ImageGen
 	def self.gen()
-		filename = 'app/assets/images/filename.png'
 		r = (1..4).to_a.shuffle.first
+		filename = ('app/assets/images/image').concat(r.to_s).concat('.png')
            	png = ChunkyPNG::Image.new(32, 32, ChunkyPNG::Color::TRANSPARENT)
 		for i in (0..31)
 			for j in (0..31)
@@ -11,7 +11,7 @@ class ImageGen
 			end
 		end
 		png.save(filename, :interlace => true)
-		return ['filename.png', r]
+		return [('image').concat(r.to_s).concat('.png'), r]
 		
 	end
 
