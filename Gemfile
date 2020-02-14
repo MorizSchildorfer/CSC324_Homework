@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'chunky_png'
 gem 'bootsnap'
 gem 'bootstrap-sass', '3.3.7'
 gem 'rails',        '5.2.3'
