@@ -11,7 +11,7 @@ class ImageGen
 			end
 		end
 		png.save(filename, :interlace => true)
-		return 'filename.png'
+		return ['filename.png', r]
 		
 	end
 
