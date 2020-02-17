@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'imgur-api'
 gem 'chunky_png'
 gem 'bootsnap'
 gem 'bootstrap-sass', '3.3.7'

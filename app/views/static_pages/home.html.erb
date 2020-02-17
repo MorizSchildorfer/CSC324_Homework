@@ -7,9 +7,8 @@
 <em> This image was brought to you by the number <%= @image_mod %><em>
   <%= link_to "Howdy!", '#', class: "btn btn-lg btn-primary" %>
 </div>
+<img src="<%= @image_loc.to_data_url %> " alt="Image"/>
 
-<%= link_to image_tag(@image_loc, alt: "Image"),
-            'http://rubyonrails.org/' %>
 
     
 
