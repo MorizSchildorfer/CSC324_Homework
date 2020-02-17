@@ -6,15 +6,15 @@ class ImageGen
 		r = (1..4).to_a.shuffle.first
 		#filename = dir.dup.concat('/image.png')
 		#puts filename
-           	png = ChunkyPNG::Image.new(32, 32, ChunkyPNG::Color::TRANSPARENT)
-		for i in (0..31)
-			for j in (0..31)
-				grey = mapTo255(i+j, 0, 64)*r
+           	png = ChunkyPNG::Image.new(64, 64, ChunkyPNG::Color::TRANSPARENT)
+		for i in (0..63)
+			for j in (0..63)
+				grey = (mapTo255(i*j+j*j, 0, 63)*r)%255
 				png[j,i] = ChunkyPNG::Color.rgba(grey, grey, grey, 255)
 			end
 		end
 		# png.save(filename, :interlace => true)
-		return [png, r]
+		return [png.resize(200,200), r]
 		
 	end
 
