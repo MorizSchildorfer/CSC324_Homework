@@ -9,12 +9,18 @@ class ImageGen
            	png = ChunkyPNG::Image.new(64, 64, ChunkyPNG::Color::TRANSPARENT)
 		for i in (0..63)
 			for j in (0..63)
+				#i*j+j*i
+				#i*i+j*j
+				#i*j+j*j
+				#i*j+i*i
+				#i*j
+				#i+j
 				grey = (mapTo255(i*j+j*j, 0, 63)*r)%255
 				png[j,i] = ChunkyPNG::Color.rgba(grey, grey, grey, 255)
 			end
 		end
 		# png.save(filename, :interlace => true)
-		return [png.resize(200,200), r]
+		return [png.resize(400,400), r]
 		
 	end
 
