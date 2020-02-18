@@ -1,13 +1,15 @@
 <% provide(:title, "Home") %>
 
 <div class="center jumbotron">
-  <h1>Welcome to my Crib</h1>
-<h2> <a href="https://www.youtube.com/watch?v=5d7EbtLb8ok">Something</a> to check out for all ma dudes and dudettes out there</h2>
+  <h1>Welcome to my Random Terrain Project</h1>
+<h2> The current goal of this version was to see if I can display dynamically generated images on a Heroku published website. As you can see below, hopefully, I was successful!</h2>
+<h2> Right now I am using a simple algorithm to map a short formula into a grey space. In the future, however, I hope to add colors with a proper gradient less structure.</h2>
 <p> <em>MSCHIZZLE OUT!</em></p>
 <em> This image was brought to you by the number <%= @image_mod %><em>
-  <%= link_to "Howdy!", '#', class: "btn btn-lg btn-primary" %>
+<p><img src="<%= @image_loc.to_data_url %> " alt="Image"/></p>
+  <p><%= button_tag "Wanna try again", type: 'button', onclick: "window.location.reload();" , class: "btn btn-lg btn-primary" %></p>
 </div>
-<img src="<%= @image_loc.to_data_url %> " alt="Image"/>
+
 
 
     
