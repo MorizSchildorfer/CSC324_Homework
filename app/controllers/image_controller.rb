@@ -13,7 +13,7 @@ class ImageGen
 				#i*j
 				#i+j
 				#(mapTo255(i*j+j*i, 0, 255)*r)%255
-				grey = (mapTo255(Math.sin(i/(r*Math::PI))+Math.cos(j/(r*Math::PI)), -2, 2))%255
+				grey = (mapTo255(Math.sin(i/(r*Math::PI))+Math.sin(j/(3*r*Math::PI))*Math.cos(j/(0.75*r*Math::PI)), -2, 2))%255
 				png[j,i] = ChunkyPNG::Color.rgba(grey, grey, grey, 255)
 			end
 		end
