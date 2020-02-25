@@ -73,7 +73,7 @@ class ImageController
 	end
 	def calculateValueShiftAtPixel(row, column)
 		if(column-row < 5 || 5 < column-row)
-			return -0.01*(column-row)
+			return -0.05*(column-row)
 		end
 		return 0
 	end
