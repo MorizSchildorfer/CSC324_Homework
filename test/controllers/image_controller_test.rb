@@ -45,4 +45,53 @@ class ImageControllerTest < ActionDispatch::IntegrationTest
     value= ImageController.mapTo255(0, -6, -1)
     assert_equal  306, value
   end
+  test "mapTo255 fixed behavior with divide by zero" do
+    value= ImageController.mapTo255(0, 0, 0)
+    assert_equal  0, value
+  end
+  
+  test "calculateMinMaxOfData with all negative values" do
+    testingHash = Hash.new(0)
+    testingHash[[0,0]] = -1
+    testingHash[[0,1]] = -2
+    testingHash[[1,0]] = -4
+    testingHash[[1,1]] = -1
+    controllerTest = ImageController.new()
+    controllerTest.image_width = 2
+    controllerTest.image_height = 2
+    controllerTest.image_data = testingHash
+    testMin, testMax = controllerTest.calculateMinMaxOfData()
+    assert_equal  -4, testMin
+    assert_equal  -1, testMax
+  end
+
+  test "calculateMinMaxOfData with all positive values" do
+    testingHash = Hash.new(0)
+    testingHash[[0,0]] = 6
+    testingHash[[0,1]] = 2
+    testingHash[[1,0]] = 4
+    testingHash[[1,1]] = 7
+    controllerTest = ImageController.new()
+    controllerTest.image_width = 2
+    controllerTest.image_height = 2
+    controllerTest.image_data = testingHash
+    testMin, testMax = controllerTest.calculateMinMaxOfData()
+    assert_equal  2, testMin
+    assert_equal  7, testMax
+  end
+
+  test "calculateMinMaxOfData with mixed values" do
+    testingHash = Hash.new(0)
+    testingHash[[0,0]] = 0
+    testingHash[[0,1]] = -2
+    testingHash[[1,0]] = 4
+    testingHash[[1,1]] = -7
+    controllerTest = ImageController.new()
+    controllerTest.image_width = 2
+    controllerTest.image_height = 2
+    controllerTest.image_data = testingHash
+    testMin, testMax = controllerTest.calculateMinMaxOfData()
+    assert_equal  -7, testMin
+    assert_equal  4, testMax
+  end
 end
