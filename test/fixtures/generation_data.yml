@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seed: 1
+  width: 1
+  height: 1
+  river_length: 1
+
+two:
+  seed: 1
+  width: 1
+  height: 1
+  river_length: 1
