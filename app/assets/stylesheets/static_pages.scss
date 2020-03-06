@@ -5,8 +5,39 @@
 
 $gray-medium-light: #eaeaea;
 $obnoxious-red: #ff0000;
-/* universal */
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+/* universal */
+table {
+  width: 100%;
+  margin: 20px auto;
+  table-layout: auto;
+}
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: solid 1px;
+  text-align: center;
+}
 body {
   padding-top: 60px;
 }
@@ -56,7 +87,8 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-
+td{
+}
 body{
 background-color: #add0e8;
 }
