@@ -30,6 +30,9 @@ class ImageController
 		self.image_width = width
 		self.image_height = height
 		generateBaseData()
+		#for i in (0..50)
+		#	randomRiverCarving((1..(height-1)).to_a.shuffle.first,(1..(width-1)).to_a.shuffle.first)
+		#end
 		return transferDataToImage()
 	end
 	def generateBaseData()
@@ -62,7 +65,7 @@ class ImageController
 			for column in (0..(image_height-1))
 				v= image_data[[row,column]]
 				grey = (ImageController.mapTo255(v, min, max))%255
-				colorArr = ImageController.calcColorGradient(grey)
+				colorArr = ImageController.smootherCalcColorGradient(grey)
 				png[row,column] = ChunkyPNG::Color.rgba(colorArr[0], colorArr[1], colorArr[2], 255)
 			end
 		end
@@ -81,6 +84,66 @@ class ImageController
 			return -0.05*(column-row)
 		end
 		return 0
+	end
+	def calculateValueShiftAtPixelAlt(row, column)
+		if( (column-row).abs < 5)
+			return -0.05*(column-row)
+		end
+		return 0
+	end
+	def randomRiverCarving(row, column)
+		path = Array.new()
+		currentData = image_data[[row,column]]
+		nextPos = [row,column]
+		while(true)
+			options = Array.new()
+			for arr in findNeighbors(nextPos[0], nextPos[1])
+				if(currentData < image_data[arr])
+					options.push(arr)
+				end
+			end
+			if(options.empty?)
+				break
+			end
+			nextPos = options.shuffle.first
+			path.push(nextPos)
+			currentData = image_data[nextPos]
+		end
+		for arr in path
+			for pos in findNeighbors(arr[0], arr[1])
+				image_data[pos]-= ((image_data[pos]).abs)*0.2
+			end
+			image_data[arr]-= ((image_data[arr]).abs)*0.4
+		end
+	end
+	def randomFlowCarving(row, column)
+		currentData = image_data[[row,column]]
+		for arr in findNeighbors(row, column)
+			if(currentData < image_data[arr])
+				randomFlowCarving(arr[0],arr[1])
+			end
+		end
+		for pos in findNeighbors(arr[0], arr[1])
+			if(image_data[pos]==calculateValueAtPixel(row, column))
+				image_data[pos]-= ((image_data[pos]).abs)*1.1
+			end
+		end
+		image_data[pos]-= ((image_data[pos]).abs)*1.1
+	end
+	def findNeighbors(row, column)
+		neighbors = Array.new()
+		for y_offset in (-1..1)
+			for x_offset in (-1..1)
+				if((y_offset != 0 || x_offset != 0) && indexExists(row + y_offset, column + x_offset))
+					neighbors.push([row + y_offset, column + x_offset])
+				end	
+			end
+		end
+		return neighbors
+		
+	end
+	def indexExists(row, column)
+		return !(row < 0 || row >=image_height) || (column < 0 || row >=image_width)
 	end
 	def self.mapTo255(input, min, max)
 		if(min==0 && max == 0)
