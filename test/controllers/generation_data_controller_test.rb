@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GenerationDisplayControllerTest < ActionDispatch::IntegrationTest
+class GenerationDataControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

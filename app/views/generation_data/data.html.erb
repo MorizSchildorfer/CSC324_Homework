@@ -1,0 +1,31 @@
+<% provide(:title, 'All Generations') %>
+<div class="center jumbotron">
+<h1>All Data</h1>
+
+<table>
+  <thead><th>ID</th><th>Seed</th><th>Width</th><th>Height</th><th>River Length</th></thead>
+  <tbody>
+    <% @settings.each do |set| %>
+    <tr>
+      	<td><%= set.id %></td>
+      	<td><%= set.seed %></td>
+      	<td><%= set.width %></td>
+      	<td><%= set.height %></td>
+      	<td><%= set.river_length %></td>
+      	<td><%= form_with(url: root_path, method: "get") do %>
+  		<%= hidden_field_tag(:seed, set.seed) %>
+  		<%= hidden_field_tag(:width, set.width) %>
+  		<%= hidden_field_tag(:height, set.height) %>
+  		<%= hidden_field_tag(:river_length, set.river_length) %>
+  		<%= submit_tag("Load") %>
+	    <% end %>
+	</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+<li><%= link_to "New Image Data Entry", new_path %></li>
+</div>
+</div>
+
