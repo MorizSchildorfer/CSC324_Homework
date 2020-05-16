@@ -7,4 +7,9 @@ Since we needed elements of randomness and I had a personal project I had been n
 I am hoping to at some point reach a level of care and detail as the following image, but alas today is not yet the day.
 </div>
 <%= image_tag("example.png", alt: "A cool randomly generated island.") %>
+
+<p> The current algorithm work using a combination of sine and cosine waves with offset frequencies to create an initial wavy structure.
+Then I create an offset from the original calculated value based on distance from the center (this does not add much to the structure and initially was meant as an experiment, but in combination with the next step created beautiful images.)
+The next and final step is to apply a color gradiant to every pixel which takes the current value and uses it to calculate RGB values by scaling into the 0-255 range with maximum and minimum values of the current image, that range the is split into 4 edges of the RGB cube to create transissions.
+Other versions of this algorithm made use of jumps in the transitions to create interesting shapes and will be considered again in the future.</p>
 <p> <em>MSCHIZZLE OUT!</em></p>

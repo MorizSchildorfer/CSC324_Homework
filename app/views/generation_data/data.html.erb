@@ -11,14 +11,6 @@
       	<td><%= set.width %></td>
       	<td><%= set.height %></td>
       	<td><%= set.river_length %></td>
-      	<td><%= form_with(url: root_path, method: "get") do %>
-  		<%= hidden_field_tag(:seed, set.seed) %>
-  		<%= hidden_field_tag(:width, set.width) %>
-  		<%= hidden_field_tag(:height, set.height) %>
-  		<%= hidden_field_tag(:river_length, set.river_length) %>
-  		<%= submit_tag("Load") %>
-	    <% end %>
-	</td>
     </tr>
     <% end %>
   </tbody>
@@ -26,4 +18,9 @@
 <div>
 <li><%= link_to "New Image Data Entry", new_path, class: "btn btn-lg btn-primary"%></li>
 </div>
+<p>I really hope this page needs no introduction :)</p>
+<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer ac viverra massa. Quisque dignissim suscipit diam a aliquam. Suspendisse dui eros, consectetur sed feugiat nec, ultricies ut massa. Nulla vitae tempus neque. Maecenas vel viverra lacus. Etiam quis mauris sed orci dapibus sollicitudin. Vestibulum velit libero, volutpat ut tempor et, ullamcorper in sapien. Ut maximus nibh eget erat iaculis, ac auctor massa lacinia. Ut a tincidunt velit. Integer fringilla orci ac dui tincidunt, euismod volutpat nulla scelerisque. Nullam aliquam, risus quis egestas iaculis, mauris orci mattis tortor, at pellentesque ante felis in orci. Maecenas semper magna ac ullamcorper luctus.
 
+Donec ullamcorper, tortor sit amet feugiat rutrum, tortor neque maximus leo, ac suscipit tortor eros nec nulla. Quisque blandit neque lectus, quis suscipit erat porttitor vitae. Donec tristique scelerisque pellentesque. Ut ullamcorper ac nisl faucibus lacinia. Nullam pulvinar lacus suscipit leo hendrerit, eget consectetur mauris rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec rhoncus lacus nibh, sed lacinia nulla sagittis a. Proin ac risus mauris. Nam non libero sem. Aliquam condimentum, risus in congue facilisis, diam massa imperdiet est, eget venenatis elit sapien ac dui. Nulla in diam ac tellus porttitor dapibus. Aliquam feugiat mauris suscipit, scelerisque risus in, facilisis velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur quis mattis ipsum. Vivamus luctus ipsum sed vestibulum lobortis.
+
+Praesent ut lacus scelerisque, lacinia turpis ac, euismod mauris. Maecenas vulputate commodo molestie. Quisque sollicitudin, leo vitae iaculis aliquet, erat nisl vulputate nulla, ut faucibus nulla metus nec tortor. Suspendisse suscipit consectetur risus vel accumsan. Suspendisse ultrices est cursus, sodales lorem sed, consectetur quam. Nulla facilisi. Aenean pharetra dignissim lacus rhoncus bibendum. Proin et elementum dui. Nulla luctus efficitur ipsum, et lobortis neque fermentum quis. Quisque pharetra tincidunt metus, vel bibendum tellus laoreet id. Quisque sed ex id erat venenatis consequat. Duis nec finibus neque. Proin euismod consectetur auctor.</p>
